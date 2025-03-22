@@ -12,8 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: env
-      run: sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
+    - run: sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
     - run: ./scripts/feeds update -a
     - run: ./scripts/feeds install -a
     - run: make -j$(nproc)
