@@ -1,5 +1,4 @@
 name: Build CI
-SSH_ACTIONS: true
 
 on:
   push:
@@ -10,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SSH_ACTIONS: "true"
 
     steps:
     - uses: actions/checkout@v4
