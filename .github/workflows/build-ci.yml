@@ -6,8 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      SSH_ACTIONS: "true"
 
     steps:
     - uses: actions/checkout@v4
@@ -15,6 +13,7 @@ jobs:
     - run: sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
     - run: ./scripts/feeds update -a
     - run: ./scripts/feeds install -a
+    - run: make download -j8
     - run: make -j$(nproc)
 
     - name: Upload artifacts
